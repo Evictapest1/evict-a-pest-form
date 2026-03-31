@@ -8,501 +8,231 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --red: #e63329;
-    --dark: #1a1a1a;
-    --mid: #2e2e2e;
-    --light: #f0efed;
-    --border: #e0e0e0;
-    --muted: #777;
-    --white: #fff;
-    --green: #2d8a4e;
-    --card-bg: #ffffff;
+    --red: #e63329; --dark: #1a1a1a; --mid: #2e2e2e; --light: #f0efed;
+    --border: #e0e0e0; --muted: #777; --white: #fff; --green: #2d8a4e;
     --input-bg: #fafafa;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--light);
-    color: var(--dark);
-    min-height: 100vh;
-    font-size: 16px;
-  }
+  body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--dark); min-height: 100vh; font-size: 16px; }
 
   /* ── HEADER ── */
-  header {
-    background: var(--dark);
-    display: flex;
-    align-items: stretch;
-    border-bottom: 5px solid var(--red);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    flex-wrap: wrap;
-  }
-  .header-logo {
-    background: var(--red);
-    padding: 12px 22px;
-    display: flex;
-    align-items: center;
-  }
+  header { background: var(--dark); display: flex; align-items: stretch; border-bottom: 5px solid var(--red); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
+  .header-logo { background: var(--red); padding: 12px 22px; display: flex; align-items: center; }
   .header-logo img { height: 46px; }
-  .header-title {
-    padding: 12px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-  }
-  .header-title h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.7rem;
-    color: var(--white);
-    letter-spacing: 3px;
-    line-height: 1;
-  }
-  .header-title span {
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .header-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 18px;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 600;
-    transition: all 0.15s;
-    letter-spacing: 0.2px;
-  }
-  .btn-red { background: var(--red); color: white; }
-  .btn-red:hover { background: #c9251b; transform: translateY(-1px); }
-  .btn-outline { background: transparent; color: #ccc; border: 1.5px solid #3a3a3a; }
-  .btn-outline:hover { border-color: var(--red); color: var(--red); }
-  .btn-dark { background: #333; color: white; }
-  .btn-dark:hover { background: #444; }
+  .header-title { padding: 12px 20px; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+  .header-title h1 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; color: var(--white); letter-spacing: 3px; line-height: 1; }
+  .header-title span { font-size: 0.7rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+  .header-actions { margin-left: auto; display: flex; align-items: center; gap: 10px; padding: 12px 18px; }
+  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 18px; border-radius: 8px; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600; transition: all 0.15s; }
+  .btn-red { background: var(--red); color: white; } .btn-red:hover { background: #c9251b; transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: #ccc; border: 1.5px solid #3a3a3a; } .btn-outline:hover { border-color: var(--red); color: var(--red); }
+  .btn-dark { background: #333; color: white; } .btn-dark:hover { background: #444; }
+  .btn-green { background: var(--green); color: white; } .btn-green:hover { background: #236b3d; }
+  .btn-blue { background: #1a73e8; color: white; } .btn-blue:hover { background: #1558b0; }
 
   /* ── TABS ── */
-  .tabs {
-    background: var(--dark);
-    display: flex;
-    border-bottom: 3px solid var(--red);
-    padding: 0 6px;
-  }
-  .tab {
-    padding: 13px 24px;
-    color: var(--muted);
-    cursor: pointer;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -3px;
-    transition: all 0.15s;
-  }
-  .tab:hover { color: #ccc; }
-  .tab.active { color: var(--red); border-bottom-color: var(--red); }
+  .tabs { background: var(--dark); display: flex; border-bottom: 3px solid var(--red); padding: 0 6px; }
+  .tab { padding: 13px 24px; color: var(--muted); cursor: pointer; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; border-bottom: 3px solid transparent; margin-bottom: -3px; transition: all 0.15s; }
+  .tab:hover { color: #ccc; } .tab.active { color: var(--red); border-bottom-color: var(--red); }
 
-  /* ── MAIN ── */
+  /* ── MAIN / SECTIONS ── */
   .main { max-width: 860px; margin: 0 auto; padding: 28px 18px 80px; }
-
-  /* ── SECTIONS ── */
-  .section {
-    background: var(--card-bg);
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    margin-bottom: 20px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-  .section-header {
-    background: var(--dark);
-    color: white;
-    padding: 14px 22px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.15rem;
-    letter-spacing: 2.5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-header .badge {
-    background: var(--red);
-    font-size: 0.62rem;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-  }
+  .section { background: var(--white); border-radius: 14px; border: 1px solid var(--border); margin-bottom: 20px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .section-header { background: var(--dark); color: white; padding: 14px 22px; font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: 2.5px; display: flex; align-items: center; gap: 10px; }
+  .section-header .badge { background: var(--red); font-size: 0.62rem; padding: 3px 9px; border-radius: 20px; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; font-weight: 600; }
   .section-body { padding: 22px; }
 
-  /* ── FORM GRID ── */
   .row { display: grid; gap: 16px; margin-bottom: 16px; }
   .row:last-child { margin-bottom: 0; }
   .row-2 { grid-template-columns: 1fr 1fr; }
   .row-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
 
-  /* ── LABELS & INPUTS ── */
-  label {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--muted);
-    margin-bottom: 6px;
+  label { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 6px; }
+  input[type=text], input[type=date], input[type=number], input[type=tel], input[type=email], select, textarea {
+    width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--dark); background: var(--input-bg);
+    transition: border-color 0.15s, box-shadow 0.15s; outline: none; line-height: 1.4;
   }
-  input[type=text],
-  input[type=date],
-  input[type=number],
-  input[type=tel],
-  select,
-  textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: var(--dark);
-    background: var(--input-bg);
-    transition: border-color 0.15s, box-shadow 0.15s;
-    outline: none;
-    line-height: 1.4;
-  }
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--red);
-    box-shadow: 0 0 0 3px rgba(230,51,41,0.08);
-    background: white;
-  }
+  input:focus, select:focus, textarea:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(230,51,41,0.08); background: white; }
   textarea { resize: vertical; min-height: 100px; }
-  select { cursor: pointer; }
 
-  /* ── PROPERTY TYPE ── */
   .prop-types { display: flex; gap: 12px; flex-wrap: wrap; }
-  .prop-type {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 11px 18px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all 0.15s;
-    background: var(--input-bg);
-  }
+  .prop-type { display: flex; align-items: center; gap: 8px; padding: 11px 18px; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: all 0.15s; background: var(--input-bg); }
   .prop-type input { display: none; }
-  .prop-type.selected {
-    border-color: var(--red);
-    background: #fff0ef;
-    color: var(--red);
-    font-weight: 600;
-  }
+  .prop-type.selected { border-color: var(--red); background: #fff0ef; color: var(--red); font-weight: 600; }
 
-  /* ── PEST GRID ── */
-  .pest-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 10px;
-  }
-  .pest-item {
-    display: flex;
-    flex-direction: column;
-    padding: 12px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all 0.15s;
-    user-select: none;
-    background: var(--input-bg);
-  }
+  .pest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+  .pest-item { display: flex; flex-direction: column; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: all 0.15s; user-select: none; background: var(--input-bg); }
   .pest-item:hover { border-color: #bbb; }
   .pest-item-top { display: flex; align-items: center; gap: 10px; }
   .pest-item input[type=checkbox] { display: none; }
-  .pest-item .check-box {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-    font-size: 12px;
-  }
+  .pest-item .check-box { width: 20px; height: 20px; border: 2px solid #ccc; border-radius: 5px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
   .pest-item.checked { border-color: var(--red); background: #fff5f5; }
-  .pest-item.checked .check-box {
-    background: var(--red);
-    border-color: var(--red);
-    color: white;
-  }
+  .pest-item.checked .check-box { background: var(--red); border-color: var(--red); }
   .pest-item.checked .check-box::after { content: '\2713'; color: white; font-size: 12px; font-weight: 700; }
-
-  /* Warranty field */
-  .pest-warranty {
-    display: none;
-    align-items: center;
-    gap: 8px;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #f0c8c5;
-  }
+  .pest-warranty { display: none; align-items: center; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0c8c5; }
   .pest-item.checked .pest-warranty { display: flex; }
-  .pest-warranty input[type=number] {
-    width: 64px;
-    padding: 6px 8px;
-    font-size: 0.95rem;
-    border: 1.5px solid #e0a09c;
-    border-radius: 6px;
-    background: white;
-    color: var(--dark);
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-  }
+  .pest-warranty input[type=number] { width: 64px; padding: 6px 8px; font-size: 0.95rem; border: 1.5px solid #e0a09c; border-radius: 6px; background: white; color: var(--dark); text-align: center; font-family: 'Inter', sans-serif; font-weight: 600; }
   .pest-warranty input[type=number]:focus { border-color: var(--red); outline: none; box-shadow: none; }
   .pest-warranty span { font-size: 0.82rem; color: var(--red); font-weight: 600; white-space: nowrap; }
 
-  /* ── TREATMENT CARDS ── */
   .treat-cards { display: flex; flex-direction: column; gap: 16px; }
-  .treat-card {
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-  .treat-card-header {
-    background: var(--mid);
-    color: white;
-    padding: 12px 18px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .treat-card-body {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    background: white;
-  }
+  .treat-card { border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .treat-card-header { background: var(--mid); color: white; padding: 12px 18px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+  .treat-card-body { padding: 20px; display: flex; flex-direction: column; gap: 16px; background: white; }
   .treat-card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .treat-card-field label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--muted);
-    margin-bottom: 7px;
-    display: block;
-  }
-
-  .area-desc {
-    width: 100%;
-    min-height: 110px;
-    resize: vertical;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    padding: 14px 16px;
-    color: var(--dark);
-    line-height: 1.7;
-    background: var(--input-bg);
-    transition: border-color 0.15s, box-shadow 0.15s;
-  }
-  .area-desc:focus {
-    border-color: var(--red);
-    box-shadow: 0 0 0 3px rgba(230,51,41,0.08);
-    outline: none;
-    background: white;
-  }
-  .treat-card-body input[type=text],
-  .treat-card-body select {
-    font-size: 1rem;
-    padding: 12px 16px;
-  }
-
-  .btn-add-row {
-    margin-top: 4px;
-    background: none;
-    border: 2px dashed #d0d0d0;
-    color: var(--muted);
-    padding: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    transition: all 0.15s;
-    width: 100%;
-    text-align: center;
-    letter-spacing: 0.3px;
-  }
+  .treat-card-field label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 7px; display: block; }
+  .area-desc { width: 100%; min-height: 110px; resize: vertical; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 1rem; padding: 14px 16px; color: var(--dark); line-height: 1.7; background: var(--input-bg); transition: border-color 0.15s, box-shadow 0.15s; }
+  .area-desc:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(230,51,41,0.08); outline: none; background: white; }
+  .treat-card-body input[type=text], .treat-card-body select { font-size: 1rem; padding: 12px 16px; }
+  .btn-add-row { margin-top: 4px; background: none; border: 2px dashed #d0d0d0; color: var(--muted); padding: 16px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; font-family: 'Inter', sans-serif; font-weight: 600; transition: all 0.15s; width: 100%; text-align: center; }
   .btn-add-row:hover { border-color: var(--red); color: var(--red); background: #fff5f5; }
-
-  .btn-del-row {
-    background: none;
-    border: none;
-    color: #999;
-    cursor: pointer;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    font-family: 'Inter', sans-serif;
-    transition: color 0.15s;
-    padding: 4px 8px;
-    border-radius: 4px;
-  }
+  .btn-del-row { background: none; border: none; color: #999; cursor: pointer; font-size: 0.78rem; font-weight: 700; font-family: 'Inter', sans-serif; transition: color 0.15s; padding: 4px 8px; border-radius: 4px; }
   .btn-del-row:hover { color: var(--red); background: rgba(230,51,41,0.08); }
 
-  /* ── TOTALS ── */
-  .totals-box {
-    background: var(--dark);
-    border-radius: 10px;
-    padding: 20px 24px;
-    color: white;
-  }
-  .totals-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    font-size: 1rem;
-  }
+  .totals-box { background: var(--dark); border-radius: 10px; padding: 20px 24px; color: white; }
+  .totals-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 1rem; }
   .totals-row span:first-child { color: #aaa; }
-  .totals-row.total {
-    border-top: 1px solid #3a3a3a;
-    margin-top: 10px;
-    padding-top: 14px;
-    font-size: 1.15rem;
-    font-weight: 700;
-  }
-  .totals-row.total span:last-child {
-    color: var(--red);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 1px;
-  }
+  .totals-row.total { border-top: 1px solid #3a3a3a; margin-top: 10px; padding-top: 14px; font-size: 1.15rem; font-weight: 700; }
+  .totals-row.total span:last-child { color: var(--red); font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 1px; }
 
-  /* ── PAYMENT ── */
   .payment-opts { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
-  .pay-opt {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all 0.15s;
-    background: var(--input-bg);
-  }
+  .pay-opt { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: all 0.15s; background: var(--input-bg); }
   .pay-opt:hover { border-color: #bbb; }
   .pay-opt.selected { border-color: var(--red); background: #fff0ef; color: var(--red); font-weight: 600; }
 
-  /* ── SIGNATURE ── */
-  .sig-wrapper {
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    background: #fafafa;
-  }
-  #sigCanvas { display: block; width: 100%; touch-action: none; cursor: crosshair; }
-  .sig-hint {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    color: #ccc;
-    font-size: 0.95rem;
-    pointer-events: none;
-    white-space: nowrap;
-    transition: opacity 0.2s;
-  }
-
   /* ── HISTORY ── */
   .history-list { display: flex; flex-direction: column; gap: 12px; }
-  .history-item {
-    background: white;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    transition: border-color 0.15s;
-  }
+  .history-item { background: white; border: 1.5px solid var(--border); border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; transition: border-color 0.15s; }
   .history-item:hover { border-color: var(--red); }
   .history-date { font-size: 0.82rem; color: var(--muted); min-width: 85px; font-weight: 500; }
   .history-client { font-weight: 600; flex: 1; font-size: 1rem; }
   .history-client small { display: block; font-size: 0.82rem; color: var(--muted); font-weight: 400; margin-top: 2px; }
   .history-amount { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--green); letter-spacing: 1px; }
-  .history-actions { display: flex; gap: 8px; }
+  .history-actions { display: flex; gap: 8px; flex-wrap: wrap; }
   .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
   .empty-state .icon { font-size: 3.5rem; margin-bottom: 14px; }
-  .empty-state p { font-size: 1rem; }
 
-  /* ── TOAST ── */
-  #toast {
-    position: fixed;
-    bottom: 28px; right: 28px;
-    background: var(--dark);
-    color: white;
-    padding: 14px 22px;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-left: 4px solid var(--green);
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s;
-    pointer-events: none;
-    z-index: 9999;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  /* ── PREVIEW MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    z-index: 500; overflow-y: auto; padding: 0;
   }
+  .modal-overlay.open { display: block; }
+  .modal-inner {
+    max-width: 780px; margin: 0 auto; padding: 0 0 40px;
+    display: flex; flex-direction: column;
+  }
+
+  /* Sticky modal header */
+  .modal-topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--dark); border-bottom: 3px solid var(--red);
+    padding: 14px 22px; display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .modal-topbar-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: white; letter-spacing: 2px; }
+  .modal-topbar-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* Preview pages */
+  .preview-page {
+    background: white; margin: 24px 16px 0;
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  /* Page 1 preview styles */
+  .preview-header { background: var(--red); padding: 20px 28px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; }
+  .preview-header-left h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: white; letter-spacing: 3px; }
+  .preview-header-left p { color: rgba(255,255,255,0.75); font-size: 0.78rem; margin-top: 3px; }
+  .preview-header-left .contact { color: rgba(255,255,255,0.65); font-size: 0.72rem; margin-top: 6px; line-height: 1.7; }
+  .preview-header-right { text-align: right; }
+  .preview-header-right h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: white; letter-spacing: 1.5px; line-height: 1.3; }
+  .preview-header-right .job-num { background: rgba(0,0,0,0.25); color: white; font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; padding: 4px 14px; border-radius: 6px; margin-top: 8px; display: inline-block; }
+
+  .preview-body { padding: 24px 28px; }
+  .preview-section { margin-bottom: 22px; }
+  .preview-section-title { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; letter-spacing: 2px; color: white; background: var(--dark); padding: 7px 14px; border-radius: 6px; margin-bottom: 12px; display: block; }
+  .preview-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
+  .preview-fields.full { grid-template-columns: 1fr; }
+  .preview-field label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); display: block; margin-bottom: 2px; }
+  .preview-field p { font-size: 0.95rem; font-weight: 500; color: var(--dark); padding-bottom: 5px; border-bottom: 1px solid #eee; min-height: 26px; }
+
+  .pest-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .pest-tag { background: #fff0ef; border: 1px solid #e0a09c; color: var(--dark); border-radius: 6px; padding: 5px 12px; font-size: 0.85rem; font-weight: 500; }
+  .pest-tag .warranty { color: var(--red); font-weight: 700; font-size: 0.78rem; margin-left: 4px; }
+
+  .treat-preview-card { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+  .treat-preview-card-header { background: #2e2e2e; color: white; padding: 8px 14px; font-size: 0.85rem; font-weight: 600; }
+  .treat-preview-card-body { padding: 12px 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.88rem; }
+  .treat-preview-card-body .detail label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); display: block; margin-bottom: 2px; }
+
+  .invoice-box { background: var(--dark); border-radius: 8px; padding: 16px 20px; color: white; }
+  .invoice-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 0.95rem; }
+  .invoice-row span:first-child { color: #aaa; }
+  .invoice-row.inv-total { border-top: 1px solid #3a3a3a; margin-top: 8px; padding-top: 12px; font-weight: 700; font-size: 1.05rem; }
+  .invoice-row.inv-total span:last-child { color: var(--red); font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; }
+
+  /* Page 2 - T&Cs */
+  .tc-header { background: var(--dark); padding: 18px 28px; border-bottom: 3px solid var(--red); }
+  .tc-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: white; letter-spacing: 2px; }
+  .tc-header p { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
+  .tc-body { padding: 24px 28px; }
+  .tc-section-title { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 1.5px; color: var(--dark); border-bottom: 2px solid var(--red); padding-bottom: 4px; margin: 20px 0 12px; }
+  .tc-section-title:first-child { margin-top: 0; }
+  .tc-item { display: flex; gap: 12px; margin-bottom: 10px; font-size: 0.88rem; line-height: 1.65; color: #333; }
+  .tc-item .tc-num { font-weight: 700; color: var(--red); min-width: 22px; flex-shrink: 0; font-size: 0.85rem; }
+  .tc-item.bold-item { font-weight: 600; color: var(--dark); }
+  .tc-item.bold-item .tc-num { color: var(--dark); }
+
+  /* Signature area in modal */
+  .sig-section {
+    background: #f8f8f6; border-top: 3px solid var(--red);
+    padding: 28px 28px 32px;
+  }
+  .sig-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 2px; color: var(--dark); margin-bottom: 6px; }
+  .sig-section p { font-size: 0.88rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; font-style: italic; }
+  .sig-canvas-wrap { background: white; border: 2px solid var(--border); border-radius: 10px; position: relative; overflow: hidden; }
+  #previewSigCanvas { display: block; width: 100%; touch-action: none; cursor: crosshair; }
+  .sig-canvas-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: #ccc; font-size: 0.9rem; pointer-events: none; white-space: nowrap; }
+  .sig-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; flex-wrap: wrap; gap: 10px; }
+  .sig-footer-info { font-size: 0.82rem; color: var(--muted); }
+  .finalise-bar {
+    background: var(--dark); border-top: 3px solid var(--green);
+    padding: 18px 28px; display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .finalise-bar p { color: #aaa; font-size: 0.85rem; }
+  .finalise-bar-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* Post-save email bar */
+  .email-bar {
+    display: none; background: #1a2a1a; border-top: 3px solid var(--green);
+    padding: 20px 28px;
+  }
+  .email-bar.show { display: block; }
+  .email-bar h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; letter-spacing: 1.5px; color: white; margin-bottom: 14px; }
+  .email-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 12px; }
+  .email-row label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #aaa; margin-bottom: 5px; }
+  .email-row input { background: #111; border-color: #333; color: white; flex: 1; min-width: 200px; }
+  .email-row input:focus { border-color: var(--green); }
+  .email-btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* Toast */
+  #toast { position: fixed; bottom: 28px; right: 28px; background: var(--dark); color: white; padding: 14px 22px; border-radius: 10px; font-size: 0.9rem; font-weight: 500; border-left: 4px solid var(--green); opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
   #toast.show { opacity: 1; transform: translateY(0); }
   #toast.error { border-left-color: var(--red); }
 
-  .page { display: none; }
-  .page.active { display: block; }
+  .page { display: none; } .page.active { display: block; }
 
   @media (max-width: 640px) {
     .row-2, .row-4, .treat-card-row { grid-template-columns: 1fr; }
     .header-actions .btn span { display: none; }
-    .header-actions .btn { padding: 9px 12px; }
-    .section-body { padding: 16px; }
-    .treat-card-body { padding: 16px; }
+    .preview-fields { grid-template-columns: 1fr; }
+    .treat-preview-card-body { grid-template-columns: 1fr 1fr; }
+    .preview-body { padding: 16px; }
+    .tc-body { padding: 16px; }
+    .sig-section { padding: 20px 16px; }
   }
 </style>
 </head>
@@ -519,7 +249,7 @@
   <div class="header-actions">
     <button class="btn btn-outline" onclick="clearForm()">&#x1F5D1; <span>Clear</span></button>
     <button class="btn btn-dark" onclick="saveJob()">&#x1F4BE; <span>Save</span></button>
-    <button class="btn btn-red" onclick="generatePDF()">&#x1F4C4; <span>Generate PDF</span></button>
+    <button class="btn btn-red" onclick="openPreview()">&#x1F4C4; <span>Generate &amp; Sign</span></button>
   </div>
 </header>
 
@@ -528,6 +258,7 @@
   <div class="tab" onclick="showTab('history',this)">&#x1F5C2; Job History</div>
 </div>
 
+<!-- ══════════════════════ FORM ══════════════════════ -->
 <div class="main page active" id="page-form">
 
   <div class="section">
@@ -539,7 +270,7 @@
       </div>
       <div class="row row-2">
         <div><label>Treatment Address</label><input type="text" id="treatAddress" placeholder="Street address"></div>
-        <div><label>Fax / Email</label><input type="text" id="clientFax" placeholder="Fax or email"></div>
+        <div><label>Client Email (for sending PDF)</label><input type="email" id="clientEmail" placeholder="client@email.com"></div>
       </div>
       <div class="row row-4">
         <div><label>Suburb</label><input type="text" id="clientSuburb" placeholder="Suburb"></div>
@@ -571,8 +302,7 @@
         <label class="prop-type" onclick="selectProp(this,'Other')"><input type="radio" name="prop"> Other</label>
       </div>
       <div id="propOtherWrap" style="margin-top:14px;display:none;">
-        <label>Other (specify)</label>
-        <input type="text" id="propOther" placeholder="Describe property type">
+        <label>Other (specify)</label><input type="text" id="propOther" placeholder="Describe property type">
       </div>
     </div>
   </div>
@@ -581,10 +311,7 @@
     <div class="section-header">&#x1F41B; Pest Management Services Required</div>
     <div class="section-body">
       <div class="pest-grid" id="pestGrid"></div>
-      <div style="margin-top:16px;">
-        <label>Other Services</label>
-        <input type="text" id="otherServices" placeholder="Any additional pest services...">
-      </div>
+      <div style="margin-top:16px;"><label>Other Services</label><input type="text" id="otherServices" placeholder="Any additional pest services..."></div>
     </div>
   </div>
 
@@ -614,10 +341,7 @@
             <span style="color:var(--muted);font-size:1rem;font-weight:500;">months</span>
           </div>
         </div>
-        <div>
-          <label>No Free Service Period -- For</label>
-          <input type="text" id="noFreeFor" placeholder="Reason if no free service period">
-        </div>
+        <div><label>No Free Service Period -- For</label><input type="text" id="noFreeFor" placeholder="Reason if no free service period"></div>
       </div>
     </div>
   </div>
@@ -634,18 +358,16 @@
           <label>Routine Service Investment $</label>
           <input type="number" id="routineAmt" placeholder="0.00" step="0.01">
           <div style="margin-top:10px;display:flex;align-items:center;gap:10px;">
-            <span style="color:var(--muted);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;">per</span>
+            <span style="color:var(--muted);font-size:0.85rem;font-weight:600;text-transform:uppercase;white-space:nowrap;">per</span>
             <input type="text" id="routinePer" placeholder="e.g. 6 months">
           </div>
         </div>
       </div>
-
       <div class="totals-box">
         <div class="totals-row"><span>Tax Invoice (excl. GST)</span><span id="dispInvoice">$0.00</span></div>
         <div class="totals-row"><span>GST (10%)</span><span id="dispGST">$0.00</span></div>
         <div class="totals-row total"><span>Total Investment</span><span id="dispTotal">$0.00</span></div>
       </div>
-
       <div style="margin-top:20px;">
         <label>Payment Method</label>
         <div class="payment-opts">
@@ -655,32 +377,13 @@
           <label class="pay-opt" onclick="selectPay(this,'Direct Debit')">Direct Debit</label>
         </div>
       </div>
-
-      <div style="margin-top:16px;">
-        <label>ABN</label>
-        <input type="text" id="abn" value="50 192 606 887" readonly style="background:#f0efed;color:var(--muted);font-weight:600;">
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-header">&#x270D;&#xFE0F; Client Signature</div>
-    <div class="section-body">
-      <p style="font-size:0.95rem;color:var(--muted);margin-bottom:16px;line-height:1.6;">
-        I hereby authorise the above pest management program having read, and had explained to me, the important conditions overleaf.
-      </p>
-      <div class="sig-wrapper">
-        <canvas id="sigCanvas" height="180"></canvas>
-        <div class="sig-hint" id="sigHint">Sign here with finger or mouse</div>
-      </div>
-      <div style="margin-top:12px;">
-        <button class="btn btn-outline" style="color:#555;border-color:#ddd;" onclick="clearSig()">Clear Signature</button>
-      </div>
+      <div style="margin-top:16px;"><label>ABN</label><input type="text" id="abn" value="50 192 606 887" readonly style="background:#f0efed;color:var(--muted);font-weight:600;"></div>
     </div>
   </div>
 
 </div>
 
+<!-- ══════════════════════ HISTORY ══════════════════════ -->
 <div class="main page" id="page-history">
   <div class="section">
     <div class="section-header">&#x1F5C2; Saved Job History</div>
@@ -690,11 +393,177 @@
   </div>
 </div>
 
+<!-- ══════════════════════ PREVIEW MODAL ══════════════════════ -->
+<div class="modal-overlay" id="previewModal">
+  <div class="modal-inner">
+
+    <!-- Sticky top bar -->
+    <div class="modal-topbar">
+      <span class="modal-topbar-title">&#x1F4C4; Review, Sign &amp; Finalise</span>
+      <div class="modal-topbar-actions">
+        <button class="btn btn-outline" onclick="clearPreviewSig()" style="font-size:0.8rem;padding:8px 14px;">Clear Sig</button>
+        <button class="btn btn-outline" onclick="closePreview()" style="font-size:0.8rem;padding:8px 14px;">&#x2715; Close</button>
+      </div>
+    </div>
+
+    <!-- ── PAGE 1: JOB DETAILS ── -->
+    <div class="preview-page" id="previewPage1">
+      <div class="preview-header">
+        <div class="preview-header-left">
+          <h2>EVICT-A-PEST</h2>
+          <p style="color:rgba(255,255,255,0.8);font-size:0.82rem;">send your pests packing!</p>
+          <div class="contact">
+            Mobile: 0425 775 888 &nbsp;|&nbsp; www.evict-a-pest.com.au<br>
+            ABN: 50 192 606 887 &nbsp;|&nbsp; Gary Cook Lic. 5070032 &nbsp;|&nbsp; Brad Cook Lic. 5080831
+          </div>
+        </div>
+        <div class="preview-header-right">
+          <h3>Pest Management Treatment<br>Proposal &amp; Advice Notice</h3>
+          <div class="job-num" id="pvJobNum"></div>
+        </div>
+      </div>
+      <div class="preview-body">
+
+        <div class="preview-section">
+          <span class="preview-section-title">Client &amp; Job Details</span>
+          <div class="preview-fields">
+            <div class="preview-field"><label>Client Name</label><p id="pvClientName"></p></div>
+            <div class="preview-field"><label>Date</label><p id="pvDate"></p></div>
+            <div class="preview-field"><label>Address</label><p id="pvAddress"></p></div>
+            <div class="preview-field"><label>Phone</label><p id="pvPhone"></p></div>
+            <div class="preview-field"><label>Technician</label><p id="pvTech"></p></div>
+            <div class="preview-field"><label>Property Type</label><p id="pvProp"></p></div>
+          </div>
+        </div>
+
+        <div class="preview-section" id="pvPestSection">
+          <span class="preview-section-title">Pest Management Services Required</span>
+          <div class="pest-tags" id="pvPests"></div>
+        </div>
+
+        <div class="preview-section" id="pvNotesSection">
+          <span class="preview-section-title">Inspection / Hygiene / Health &amp; Safety Advice</span>
+          <p id="pvNotes" style="font-size:0.92rem;line-height:1.7;color:#333;"></p>
+        </div>
+
+        <div class="preview-section" id="pvTreatSection">
+          <span class="preview-section-title">Treatment Areas &amp; Control Agents</span>
+          <div id="pvTreatCards"></div>
+        </div>
+
+        <div class="preview-section" id="pvLimitSection">
+          <span class="preview-section-title">Specific Limitations &amp; Service Period</span>
+          <p id="pvLimits" style="font-size:0.92rem;line-height:1.7;color:#333;"></p>
+        </div>
+
+        <div class="preview-section">
+          <span class="preview-section-title">Tax Invoice</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="invoice-box">
+              <div class="invoice-row"><span>Tax Invoice (excl. GST)</span><span id="pvInvoice"></span></div>
+              <div class="invoice-row"><span>GST (10%)</span><span id="pvGST"></span></div>
+              <div class="invoice-row inv-total"><span>Total Investment</span><span id="pvTotal"></span></div>
+            </div>
+            <div style="font-size:0.88rem;line-height:1.9;color:#444;padding-top:4px;">
+              <div><strong>ABN:</strong> 50 192 606 887</div>
+              <div><strong>Payment:</strong> <span id="pvPayMethod"></span></div>
+              <div id="pvRoutineWrap"><strong>Routine Service:</strong> <span id="pvRoutine"></span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── PAGE 2: T&Cs ── -->
+    <div class="preview-page" id="previewPage2">
+      <div class="tc-header">
+        <h2>Important Information Concerning Your Pest Management Program</h2>
+        <p>Please read all conditions carefully before signing below.</p>
+      </div>
+      <div class="tc-body">
+
+        <div class="tc-section-title">Health and Safety Information</div>
+        <div class="tc-item"><span class="tc-num">1.</span><span>You must advise us of any pets or of any personal or family/staff allergies, or other concerns.</span></div>
+        <div class="tc-item"><span class="tc-num">2.</span><span>Any persons who are particularly sensitive, or who suffer from allergic reactions, should, as a matter of precaution, remain out of the premises for a period of 24 hours and not return until after the premises have been fully ventilated.</span></div>
+        <div class="tc-item"><span class="tc-num">3.</span><span>You must remove or protect any people, animals, birds or fish during the treatment period.</span></div>
+        <div class="tc-item"><span class="tc-num">4.</span><span>You must cover all food items and all food utensils.</span></div>
+        <div class="tc-item"><span class="tc-num">5.</span><span>You must avoid contact with treated surfaces until the control agent has dried.</span></div>
+        <div class="tc-item"><span class="tc-num">6.</span><span>You must observe any verbal advice provided by our firm or our licensed operator at the time of treatment.</span></div>
+        <div class="tc-item"><span class="tc-num">7.</span><span>You must ensure your premises are properly ventilated after treatment. Leave any air-conditioners on 'vent mode' (so they circulate outside air into the building) for a period of at least four hours after the treatment or after re-occupying.</span></div>
+        <div class="tc-item"><span class="tc-num">8.</span><span><strong>Water Tanks:</strong> No treatment can be carried out around water tanks not fully sealed or to water collection areas. You must advise us of water tanks installations.</span></div>
+
+        <div class="tc-section-title">Payment Terms and Details of FREE Service Period</div>
+        <div class="tc-item"><span class="tc-num">9.</span><span>If during the course of the program it is found that structural or environmental conditions prevent us performing any sections of the Management Program then the FREE Service Period or the cost of your investment may have to be reviewed.</span></div>
+        <div class="tc-item"><span class="tc-num">10.</span><span>Unless specific written arrangements have been provided the full contract price shall be due and payable and recoverable by this Firm on commencement of the initial treatment.</span></div>
+        <div class="tc-item"><span class="tc-num">11.</span><span>Any FREE Service Period shall be null and void unless all monies due and payable to this Firm have been paid in full within the standard terms of business above.</span></div>
+        <div class="tc-item"><span class="tc-num">12.</span><span>Where a FREE Service Period has been provided then, upon notification by you, we agree to provide you with any remedial treatment(s) as may be required to the nominated property, AT NO COST TO YOU. Any FREE Service Period is conditional upon you notifying us of signs of pest infestation.</span></div>
+        <div class="tc-item bold-item"><span class="tc-num">13.</span><span><strong>No responsibility is accepted, or warranty implied, for any damage or consequential losses that may occur as the result of past, current or future pest activity.</strong></span></div>
+        <div class="tc-item"><span class="tc-num">14.</span><span>The proposed treatment only applies to the pest species named overleaf on this Pest Management Proposal. The program does not provide protection against any other pest/s.</span></div>
+
+        <div class="tc-section-title">Treatment Details and Control Agents</div>
+        <div class="tc-item"><span class="tc-num">15.</span><span>Only control agents approved by the Department of Primary Industry and Energy's Australian Pesticides &amp; Veterinary Medicines Authority (APVMA) and registered for use by the relevant State or Territory Registration Authority will be used.</span></div>
+        <div class="tc-item"><span class="tc-num">16.</span><span>While every care will be taken, this firm will not be held liable should staining of timbers, fabrics, wall coverings, floor coverings or any other articles occur.</span></div>
+        <div class="tc-item"><span class="tc-num">17.</span><span>WARNING. Where drilling and/or cutting is required; no liability is accepted should damage result to concealed services such as power, gas, water, etc. You indemnify Us against any costs that may arise from such possible damages. Clear and accurate plans should be provided by you before we commence.</span></div>
+        <div class="tc-item"><span class="tc-num">18.</span><span>You accept that this pest management program can be rendered ineffective if you fail to implement our recommended hygiene procedures, by making building alterations, or by the introduction of conducive or infested materials.</span></div>
+
+        <div class="tc-section-title">Termites and Other Timber Pests</div>
+        <div class="tc-item"><span class="tc-num">19.</span><span>This program does not cover treatment for, or inspection for, termites (white ants) or any other timber pests.</span></div>
+        <div class="tc-item bold-item"><span class="tc-num">20.</span><span><strong>We strongly recommend that you should arrange to have your property inspected for termites at least once every twelve (12) months and preferably every three (3) to six (6) months as recommended in the Australian Standards AS 3660 Protection of buildings from subterranean termites and AS 4349.3 Inspection of buildings - Timber pest inspections. A termite or timber pest inspection can be arranged upon request and is recommended.</strong></span></div>
+
+        <div class="tc-section-title">Disclaimer of Liability to Third Parties</div>
+        <div class="tc-item"><span class="tc-num">21.</span><span>Compensation will only be payable for losses arising in contract or tort sustained by the client named on the front of this Pest Management Treatment Proposal &amp; Advice Notice. Any third party acting or relying on this Pest Management Treatment Proposal &amp; Advice Notice, in whole or in part, does so entirely at their own risk.</span></div>
+
+      </div>
+
+      <!-- SIGNATURE AT VERY BOTTOM -->
+      <div class="sig-section">
+        <h3>&#x270D;&#xFE0F; Client Signature</h3>
+        <p>By signing below, I confirm I have read and understood all conditions above (points 1–21) and hereby authorise the above pest management program.</p>
+        <div class="sig-canvas-wrap">
+          <canvas id="previewSigCanvas" height="200"></canvas>
+          <div class="sig-canvas-hint" id="previewSigHint">Sign here with finger or mouse</div>
+        </div>
+        <div class="sig-footer">
+          <div class="sig-footer-info">
+            Client: <strong id="sigClientName"></strong> &nbsp;|&nbsp; Date: <strong id="sigDate"></strong>
+          </div>
+          <button class="btn btn-outline" style="color:#555;border-color:#ccc;font-size:0.82rem;" onclick="clearPreviewSig()">Clear</button>
+        </div>
+      </div>
+
+      <!-- FINALISE BAR -->
+      <div class="finalise-bar">
+        <p>Once signed, save the PDF and send to client.</p>
+        <div class="finalise-bar-actions">
+          <button class="btn btn-green" onclick="finalisePDF()">&#x2713; Save PDF &amp; Finalise</button>
+        </div>
+      </div>
+
+      <!-- EMAIL BAR (shown after save) -->
+      <div class="email-bar" id="emailBar">
+        <h4>&#x2709;&#xFE0F; Send PDF via Email</h4>
+        <div class="email-row">
+          <div style="flex:1;">
+            <label>Client Email Address</label>
+            <input type="email" id="emailClientAddr" placeholder="client@email.com">
+          </div>
+        </div>
+        <div class="email-btn-row">
+          <button class="btn btn-blue" onclick="emailClient()">&#x1F4E7; Email to Client</button>
+          <button class="btn btn-dark" onclick="emailOurselves()">&#x1F4E4; Email to Ourselves</button>
+        </div>
+        <p style="font-size:0.78rem;color:#5a7a5a;margin-top:12px;">Opens your default mail app with the job details pre-filled. Attach the saved PDF before sending.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
 const PESTS = ['Ants','Bees','Bed Bugs','Rats','Fleas','Paper Wasps','Bird Lice','Mice','Webbing Spiders','Silverfish','Carpet Beetles','Possums','Ground Spiders','Case-making Moths','Anobiid Borers','German Cockroaches','European Wasps','Cockroach Common','Birds'];
-
 const AGENTS = [
   {name:'-- Select Agent --',active:''},
   {name:'Maxxthor',active:'100g/l Bifenthrin'},
@@ -709,23 +578,26 @@ const AGENTS = [
   {name:'Other',active:''}
 ];
 
-let selectedProp='', selectedPay='', sigDrawing=false, sigHasMark=false, cardCount=0;
+const OUR_EMAIL = 'info@evict-a-pest.com.au'; // change to your actual email
+
+let selectedProp='', selectedPay='', cardCount=0;
+let previewSigDrawing=false, previewSigHasMark=false;
+let lastSavedData=null, lastPDFBlob=null;
 
 document.addEventListener('DOMContentLoaded',()=>{
-  buildPestGrid(); setDefaultDate(); initSigCanvas();
+  buildPestGrid(); setDefaultDate(); initPreviewSig();
   addTreatCard('Interior to: '); addTreatCard('Exterior to: '); addTreatCard('Other: Roof Void');
   renderHistory();
 });
 
 function setDefaultDate(){ document.getElementById('jobDate').value=new Date().toISOString().split('T')[0]; }
 
+// ── PEST GRID ──
 function buildPestGrid(){
-  document.getElementById('pestGrid').innerHTML = PESTS.map(p=>`
+  document.getElementById('pestGrid').innerHTML=PESTS.map(p=>`
     <div class="pest-item" data-pest="${p}" onclick="togglePest(this)">
       <div class="pest-item-top">
-        <input type="checkbox" value="${p}">
-        <div class="check-box"></div>
-        <span>${p}</span>
+        <input type="checkbox" value="${p}"><div class="check-box"></div><span>${p}</span>
       </div>
       <div class="pest-warranty" onclick="event.stopPropagation()">
         <input type="number" class="warranty-months" placeholder="0" min="0" max="60">
@@ -733,17 +605,14 @@ function buildPestGrid(){
       </div>
     </div>`).join('');
 }
-
 function togglePest(el){
   el.classList.toggle('checked');
-  el.querySelector('input[type=checkbox]').checked = el.classList.contains('checked');
+  el.querySelector('input[type=checkbox]').checked=el.classList.contains('checked');
   if(!el.classList.contains('checked')) el.querySelector('.warranty-months').value='';
 }
-
 function getCheckedPests(){
   return [...document.querySelectorAll('.pest-item.checked')].map(el=>({
-    name: el.dataset.pest,
-    warranty: el.querySelector('.warranty-months').value||''
+    name:el.dataset.pest, warranty:el.querySelector('.warranty-months').value||''
   }));
 }
 
@@ -757,10 +626,10 @@ function selectPay(el,val){
   el.classList.add('selected'); selectedPay=val;
 }
 
+// ── TREATMENT CARDS ──
 function agentOptions(selected){
   return AGENTS.map(a=>`<option value="${a.name}" data-active="${a.active}" ${selected===a.name?'selected':''}>${a.name}</option>`).join('');
 }
-
 function addTreatCard(defaultArea='',defaultAgent='',defaultActive='',defaultRate='',defaultAmt=''){
   cardCount++;
   const id=cardCount;
@@ -800,17 +669,13 @@ function addTreatCard(defaultArea='',defaultAgent='',defaultActive='',defaultRat
     </div>`;
   document.getElementById('treatCards').appendChild(div);
 }
-
 function syncActive(sel,id){
   const card=document.querySelector('.treat-card[data-card-id="'+id+'"]');
   if(!card) return;
   const opt=sel.options[sel.selectedIndex];
   if(opt&&opt.dataset.active) card.querySelector('.active-field').value=opt.dataset.active;
 }
-function delCard(id){
-  const c=document.querySelector('.treat-card[data-card-id="'+id+'"]');
-  if(c) c.remove();
-}
+function delCard(id){ const c=document.querySelector('.treat-card[data-card-id="'+id+'"]'); if(c) c.remove(); }
 function getTreatRows(){
   return [...document.querySelectorAll('.treat-card')].map(card=>({
     area:card.querySelector('.area-desc').value,
@@ -828,29 +693,36 @@ function calcGST(){
   document.getElementById('dispTotal').textContent='$'+(base*1.1).toFixed(2);
 }
 
-function initSigCanvas(){
-  const canvas=document.getElementById('sigCanvas'), ctx=canvas.getContext('2d');
-  function resize(){ canvas.width=canvas.offsetWidth; canvas.height=180; ctx.strokeStyle='#1a1a1a'; ctx.lineWidth=2.5; ctx.lineCap='round'; ctx.lineJoin='round'; }
-  resize(); window.addEventListener('resize',resize);
+// ── PREVIEW SIGNATURE ──
+function initPreviewSig(){
+  const canvas=document.getElementById('previewSigCanvas'), ctx=canvas.getContext('2d');
+  function resize(){ canvas.width=canvas.offsetWidth||700; canvas.height=200; ctx.strokeStyle='#1a1a1a'; ctx.lineWidth=2.5; ctx.lineCap='round'; ctx.lineJoin='round'; }
+  resize(); window.addEventListener('resize',()=>{ if(document.getElementById('previewModal').classList.contains('open')) resize(); });
   function pos(e){ const r=canvas.getBoundingClientRect(),s=e.touches?e.touches[0]:e; return{x:(s.clientX-r.left)*(canvas.width/r.width),y:(s.clientY-r.top)*(canvas.height/r.height)}; }
-  canvas.addEventListener('mousedown',e=>{sigDrawing=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);hideSigHint();});
-  canvas.addEventListener('mousemove',e=>{if(!sigDrawing)return;const p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke();sigHasMark=true;});
-  canvas.addEventListener('mouseup',()=>sigDrawing=false);
-  canvas.addEventListener('mouseleave',()=>sigDrawing=false);
-  canvas.addEventListener('touchstart',e=>{e.preventDefault();sigDrawing=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);hideSigHint();},{passive:false});
-  canvas.addEventListener('touchmove',e=>{e.preventDefault();if(!sigDrawing)return;const p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke();sigHasMark=true;},{passive:false});
-  canvas.addEventListener('touchend',()=>sigDrawing=false);
+  canvas.addEventListener('mousedown',e=>{previewSigDrawing=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);hidePvHint();});
+  canvas.addEventListener('mousemove',e=>{if(!previewSigDrawing)return;const p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke();previewSigHasMark=true;});
+  canvas.addEventListener('mouseup',()=>previewSigDrawing=false);
+  canvas.addEventListener('mouseleave',()=>previewSigDrawing=false);
+  canvas.addEventListener('touchstart',e=>{e.preventDefault();previewSigDrawing=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);hidePvHint();},{passive:false});
+  canvas.addEventListener('touchmove',e=>{e.preventDefault();if(!previewSigDrawing)return;const p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke();previewSigHasMark=true;},{passive:false});
+  canvas.addEventListener('touchend',()=>previewSigDrawing=false);
 }
-function hideSigHint(){ document.getElementById('sigHint').style.opacity='0'; }
-function clearSig(){ const c=document.getElementById('sigCanvas'); c.getContext('2d').clearRect(0,0,c.width,c.height); document.getElementById('sigHint').style.opacity='1'; sigHasMark=false; }
+function hidePvHint(){ document.getElementById('previewSigHint').style.opacity='0'; }
+function clearPreviewSig(){
+  const c=document.getElementById('previewSigCanvas');
+  c.getContext('2d').clearRect(0,0,c.width,c.height);
+  document.getElementById('previewSigHint').style.opacity='1';
+  previewSigHasMark=false;
+}
 
+// ── COLLECT DATA ──
 function collectData(){
   const base=parseFloat(document.getElementById('invoiceAmt').value)||0;
   return {
     clientName:document.getElementById('clientName').value,
     clientPhone:document.getElementById('clientPhone').value,
+    clientEmail:document.getElementById('clientEmail').value,
     treatAddress:document.getElementById('treatAddress').value,
-    clientFax:document.getElementById('clientFax').value,
     clientSuburb:document.getElementById('clientSuburb').value,
     clientState:document.getElementById('clientState').value,
     clientPostcode:document.getElementById('clientPostcode').value,
@@ -868,11 +740,142 @@ function collectData(){
     routineAmt:document.getElementById('routineAmt').value,
     routinePer:document.getElementById('routinePer').value,
     payMethod:selectedPay,
-    sigData:sigHasMark?document.getElementById('sigCanvas').toDataURL():null,
     savedAt:new Date().toISOString()
   };
 }
 
+// ── OPEN PREVIEW ──
+function openPreview(){
+  const d=collectData();
+  if(!d.clientName){showToast('Enter a client name first.',true);return;}
+
+  // Populate preview fields
+  document.getElementById('pvJobNum').textContent=d.jobNumber||'';
+  document.getElementById('pvClientName').textContent=d.clientName;
+  document.getElementById('pvDate').textContent=d.jobDate;
+  document.getElementById('pvAddress').textContent=[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', ');
+  document.getElementById('pvPhone').textContent=d.clientPhone||'--';
+  document.getElementById('pvTech').textContent=d.techName||'--';
+  document.getElementById('pvProp').textContent=d.propType+(d.propOther?': '+d.propOther:'')||'--';
+
+  // Pests
+  const pestsEl=document.getElementById('pvPests');
+  if(d.pests&&d.pests.length){
+    pestsEl.innerHTML=d.pests.map(p=>`<span class="pest-tag">${p.name}${p.warranty?'<span class="warranty"> -- '+p.warranty+' mth</span>':''}</span>`).join('');
+    document.getElementById('pvPestSection').style.display='';
+  } else { document.getElementById('pvPestSection').style.display='none'; }
+
+  // Notes
+  const notesEl=document.getElementById('pvNotes');
+  if(d.inspectionNotes){ notesEl.textContent=d.inspectionNotes; document.getElementById('pvNotesSection').style.display=''; }
+  else { document.getElementById('pvNotesSection').style.display='none'; }
+
+  // Treatment
+  const treatEl=document.getElementById('pvTreatCards');
+  if(d.treatRows&&d.treatRows.length){
+    treatEl.innerHTML=d.treatRows.map(r=>`
+      <div class="treat-preview-card">
+        <div class="treat-preview-card-header">${r.area||'Treatment Area'}</div>
+        <div class="treat-preview-card-body">
+          <div class="detail"><label>Control Agent</label>${r.agent||'--'}</div>
+          <div class="detail"><label>Active Constituent</label>${r.active||'--'}</div>
+          <div class="detail"><label>Rate / Amount</label>${[r.rate,r.amt].filter(Boolean).join(' / ')||'--'}</div>
+        </div>
+      </div>`).join('');
+    document.getElementById('pvTreatSection').style.display='';
+  } else { document.getElementById('pvTreatSection').style.display='none'; }
+
+  // Limits
+  let limitsText='';
+  if(d.freeMonths) limitsText+='Free Service Period: '+d.freeMonths+' months\n';
+  if(d.noFreeFor) limitsText+='No Free Service Period -- For: '+d.noFreeFor;
+  if(limitsText){ document.getElementById('pvLimits').textContent=limitsText.trim(); document.getElementById('pvLimitSection').style.display=''; }
+  else { document.getElementById('pvLimitSection').style.display='none'; }
+
+  // Invoice
+  document.getElementById('pvInvoice').textContent='$'+d.invoiceAmt.toFixed(2);
+  document.getElementById('pvGST').textContent='$'+d.gst.toFixed(2);
+  document.getElementById('pvTotal').textContent='$'+d.total.toFixed(2);
+  document.getElementById('pvPayMethod').textContent=d.payMethod||'--';
+  if(d.routineAmt){ document.getElementById('pvRoutine').textContent='$'+d.routineAmt+' per '+(d.routinePer||'--'); document.getElementById('pvRoutineWrap').style.display=''; }
+  else { document.getElementById('pvRoutineWrap').style.display='none'; }
+
+  // Sig footer info
+  document.getElementById('sigClientName').textContent=d.clientName;
+  document.getElementById('sigDate').textContent=d.jobDate;
+
+  // Pre-fill client email if set
+  document.getElementById('emailClientAddr').value=d.clientEmail||'';
+
+  // Reset email bar
+  document.getElementById('emailBar').classList.remove('show');
+
+  clearPreviewSig();
+  document.getElementById('previewModal').classList.add('open');
+  document.getElementById('previewModal').scrollTop=0;
+  lastSavedData=d;
+}
+
+function closePreview(){
+  document.getElementById('previewModal').classList.remove('open');
+}
+
+// ── FINALISE PDF ──
+function finalisePDF(){
+  if(!previewSigHasMark){ showToast('Please have the client sign first.',true); return; }
+  const sigData=document.getElementById('previewSigCanvas').toDataURL();
+  const d=lastSavedData;
+  d.sigData=sigData;
+
+  // Save to history
+  const jobs=JSON.parse(localStorage.getItem('eap_jobs')||'[]');
+  const existing=jobs.findIndex(j=>j.clientName===d.clientName&&j.jobDate===d.jobDate);
+  if(existing>=0) jobs[existing]={...jobs[existing],...d,id:jobs[existing].id};
+  else jobs.unshift({id:Date.now(),...d});
+  localStorage.setItem('eap_jobs',JSON.stringify(jobs));
+
+  buildPDF(d);
+  document.getElementById('emailBar').classList.add('show');
+  showToast('PDF saved! Ready to email.');
+  renderHistory();
+}
+
+// ── EMAIL ──
+function emailClient(){
+  const addr=document.getElementById('emailClientAddr').value||lastSavedData.clientEmail||'';
+  const d=lastSavedData;
+  const subject=encodeURIComponent('Evict-A-Pest Treatment Proposal -- '+d.clientName+' -- '+d.jobDate);
+  const body=encodeURIComponent(
+    'Dear '+d.clientName+',\n\n'+
+    'Please find attached your Pest Management Treatment Proposal & Advice Notice.\n\n'+
+    'Job Date: '+d.jobDate+'\n'+
+    'Address: '+[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', ')+'\n'+
+    'Total Investment: $'+d.total.toFixed(2)+'\n\n'+
+    'Please attach the PDF that was just saved to your device.\n\n'+
+    'Kind regards,\n'+d.techName+'\nEvict-A-Pest\nMobile: 0425 775 888\nwww.evict-a-pest.com.au'
+  );
+  window.location.href='mailto:'+addr+'?subject='+subject+'&body='+body;
+}
+
+function emailOurselves(){
+  const d=lastSavedData;
+  const subject=encodeURIComponent('Job Record -- '+d.clientName+' -- '+d.jobDate);
+  const body=encodeURIComponent(
+    'Job Record\n\n'+
+    'Client: '+d.clientName+'\n'+
+    'Phone: '+(d.clientPhone||'--')+'\n'+
+    'Date: '+d.jobDate+'\n'+
+    'Address: '+[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', ')+'\n'+
+    'Technician: '+(d.techName||'--')+'\n'+
+    'Pests Treated: '+(d.pests||[]).map(p=>p.name+(p.warranty?' ('+p.warranty+' mth)':'')).join(', ')+'\n'+
+    'Total Investment: $'+d.total.toFixed(2)+'\n'+
+    'Payment: '+(d.payMethod||'--')+'\n\n'+
+    'Please attach the saved PDF to this email for your records.'
+  );
+  window.location.href='mailto:'+OUR_EMAIL+'?subject='+subject+'&body='+body;
+}
+
+// ── SAVE (quick save without PDF) ──
 function saveJob(){
   const data=collectData();
   if(!data.clientName){showToast('Enter a client name first.',true);return;}
@@ -882,9 +885,10 @@ function saveJob(){
   showToast('Job saved!'); renderHistory();
 }
 
+// ── CLEAR FORM ──
 function clearForm(){
   if(!confirm('Clear all form data?')) return;
-  document.querySelectorAll('input[type=text],input[type=tel],input[type=number],input[type=date],textarea,select').forEach(el=>{if(el.id==='abn')return;el.value='';});
+  document.querySelectorAll('input[type=text],input[type=tel],input[type=number],input[type=date],input[type=email],textarea,select').forEach(el=>{if(el.id==='abn')return;el.value='';});
   setDefaultDate();
   document.querySelectorAll('.pest-item').forEach(el=>{el.classList.remove('checked');el.querySelector('input[type=checkbox]').checked=false;const w=el.querySelector('.warranty-months');if(w)w.value='';});
   document.querySelectorAll('.prop-type,.pay-opt').forEach(el=>el.classList.remove('selected'));
@@ -892,9 +896,10 @@ function clearForm(){
   selectedProp=''; selectedPay='';
   document.getElementById('treatCards').innerHTML=''; cardCount=0;
   addTreatCard('Interior to: '); addTreatCard('Exterior to: '); addTreatCard('Other: Roof Void');
-  clearSig(); calcGST(); showToast('Form cleared.');
+  calcGST(); showToast('Form cleared.');
 }
 
+// ── TABS ──
 function showTab(name,el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -902,6 +907,7 @@ function showTab(name,el){
   if(name==='history') renderHistory();
 }
 
+// ── HISTORY ──
 function renderHistory(){
   const jobs=JSON.parse(localStorage.getItem('eap_jobs')||'[]');
   const body=document.getElementById('historyBody');
@@ -909,10 +915,7 @@ function renderHistory(){
   body.innerHTML='<div class="history-list">'+jobs.map(j=>`
     <div class="history-item">
       <div class="history-date">${j.jobDate||'--'}</div>
-      <div class="history-client">
-        <strong>${j.clientName||'Unknown'}</strong>
-        <small>${[j.treatAddress,j.clientSuburb].filter(Boolean).join(', ')}</small>
-      </div>
+      <div class="history-client"><strong>${j.clientName||'Unknown'}</strong><small>${[j.treatAddress,j.clientSuburb].filter(Boolean).join(', ')}</small></div>
       <div class="history-amount">$${(j.total||0).toFixed(2)}</div>
       <div class="history-actions">
         <button class="btn btn-dark" style="padding:8px 12px;font-size:0.82rem;" onclick="loadJob(${j.id})">Load</button>
@@ -922,13 +925,20 @@ function renderHistory(){
     </div>`).join('')+'</div>';
 }
 function delJob(id){ if(!confirm('Delete this job?'))return; localStorage.setItem('eap_jobs',JSON.stringify(JSON.parse(localStorage.getItem('eap_jobs')||'[]').filter(j=>j.id!==id))); renderHistory(); }
-function loadJob(id){ const j=JSON.parse(localStorage.getItem('eap_jobs')||'[]').find(x=>x.id===id); if(j){populateForm(j);showTab('form',document.querySelectorAll('.tab')[0]);showToast('Job loaded.');} }
-function rePDF(id){ const j=JSON.parse(localStorage.getItem('eap_jobs')||'[]').find(x=>x.id===id); if(j) buildPDF(j); }
+function loadJob(id){
+  const j=JSON.parse(localStorage.getItem('eap_jobs')||'[]').find(x=>x.id===id);
+  if(!j) return;
+  populateForm(j); showTab('form',document.querySelectorAll('.tab')[0]); showToast('Job loaded.');
+}
+function rePDF(id){
+  const j=JSON.parse(localStorage.getItem('eap_jobs')||'[]').find(x=>x.id===id);
+  if(j){ lastSavedData=j; buildPDF(j); }
+}
 
 function populateForm(j){
   const set=(id,val)=>{const el=document.getElementById(id);if(el)el.value=val||'';};
-  set('clientName',j.clientName);set('clientPhone',j.clientPhone);set('treatAddress',j.treatAddress);
-  set('clientFax',j.clientFax);set('clientSuburb',j.clientSuburb);set('clientState',j.clientState);
+  set('clientName',j.clientName);set('clientPhone',j.clientPhone);set('clientEmail',j.clientEmail);
+  set('treatAddress',j.treatAddress);set('clientSuburb',j.clientSuburb);set('clientState',j.clientState);
   set('clientPostcode',j.clientPostcode);set('jobDate',j.jobDate);set('techName',j.techName);
   set('jobNumber',j.jobNumber);set('propOther',j.propOther);set('otherServices',j.otherServices);
   set('inspectionNotes',j.inspectionNotes);set('freeMonths',j.freeMonths);set('noFreeFor',j.noFreeFor);
@@ -945,97 +955,83 @@ function populateForm(j){
   calcGST();
 }
 
-function generatePDF(){
-  const data=collectData();
-  if(!data.clientName){showToast('Enter a client name first.',true);return;}
-  buildPDF(data);
-}
-
+// ── BUILD PDF (2 pages) ──
 function buildPDF(d){
   const {jsPDF}=window.jspdf;
   const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
-  const W=210,H=297,margin=14,col=W-margin*2;
-  let y=0;
+  const W=210,H=297,M=14,col=W-M*2;
+
   const sf=(style,size,color)=>{doc.setFont('helvetica',style);doc.setFontSize(size);doc.setTextColor(...(color||[26,26,26]));};
   const hl=(x1,y1,x2,y2,color,lw)=>{doc.setDrawColor(...(color||[221,221,221]));doc.setLineWidth(lw||0.3);doc.line(x1,y1,x2,y2);};
   const rc=(x,y,w,h,fill)=>{doc.setFillColor(...fill);doc.rect(x,y,w,h,'F');};
   const fld=(label,value,x,fy,w)=>{sf('bold',6.5,[120,120,120]);doc.text(label.toUpperCase(),x,fy);sf('normal',9.5,[26,26,26]);doc.text(value||'--',x,fy+5);hl(x,fy+6.5,x+w,fy+6.5,[220,220,220]);};
 
+  // ══ PAGE 1 ══
+  // Red header
   rc(0,0,W,32,[230,51,41]);
-  sf('bold',20,[255,255,255]); doc.text('EVICT-A-PEST',margin,14);
-  sf('normal',7.5,[255,200,200]); doc.text('send your pests packing!',margin,19.5);
+  sf('bold',20,[255,255,255]); doc.text('EVICT-A-PEST',M,14);
+  sf('normal',7.5,[255,200,200]); doc.text('send your pests packing!',M,19.5);
   sf('normal',6.5,[255,200,200]);
-  doc.text('Mobile: 0425 775 888  |  www.evict-a-pest.com.au  |  ABN: 50 192 606 887',margin,25);
-  doc.text('Gary Cook Lic. 5070032  |  Brad Cook Lic. 5080831',margin,29.5);
+  doc.text('Mobile: 0425 775 888  |  www.evict-a-pest.com.au  |  ABN: 50 192 606 887',M,25);
+  doc.text('Gary Cook Lic. 5070032  |  Brad Cook Lic. 5080831',M,29.5);
   sf('bold',10,[255,255,255]);
-  doc.text('Pest Management Treatment',W-margin,14,{align:'right'});
-  doc.text('Proposal & Advice Notice',W-margin,19.5,{align:'right'});
-  if(d.jobNumber){rc(W-margin-24,24,26,7,[180,30,20]);sf('bold',8.5,[255,255,255]);doc.text(d.jobNumber,W-margin,29.5,{align:'right'});}
-  y=38;
+  doc.text('Pest Management Treatment',W-M,14,{align:'right'});
+  doc.text('Proposal & Advice Notice',W-M,19.5,{align:'right'});
+  if(d.jobNumber){rc(W-M-26,23,28,8,[180,30,20]);sf('bold',9,[255,255,255]);doc.text(d.jobNumber,W-M-1,29,{align:'right'});}
 
-  const sh=(title)=>{rc(margin,y,col,7,[26,26,26]);sf('bold',8,[255,255,255]);doc.text(title,margin+3,y+4.8);y+=10;};
+  let y=38;
+  const sh1=(title)=>{rc(M,y,col,7,[26,26,26]);sf('bold',8,[255,255,255]);doc.text(title,M+3,y+4.8);y+=10;};
 
-  sh('CLIENT & JOB DETAILS');
-  fld('Client Name',d.clientName,margin,y,col*0.55);
-  fld('Date',d.jobDate,margin+col*0.6,y,col*0.38); y+=12;
-  fld('Treatment Address',[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', '),margin,y,col*0.75);
-  fld('Phone',d.clientPhone,margin+col*0.78,y,col*0.2); y+=12;
-  fld('Technician',d.techName,margin,y,col*0.45);
-  fld('Property Type',d.propType+(d.propOther?': '+d.propOther:''),margin+col*0.5,y,col*0.48); y+=14;
+  sh1('CLIENT & JOB DETAILS');
+  fld('Client Name',d.clientName,M,y,col*0.55);
+  fld('Date',d.jobDate,M+col*0.6,y,col*0.38); y+=12;
+  fld('Address',[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', '),M,y,col*0.75);
+  fld('Phone',d.clientPhone,M+col*0.78,y,col*0.2); y+=12;
+  fld('Technician',d.techName,M,y,col*0.45);
+  fld('Property Type',d.propType+(d.propOther?': '+d.propOther:''),M+col*0.5,y,col*0.48); y+=14;
 
   if(d.pests&&d.pests.length){
-    sh('PEST MANAGEMENT SERVICES REQUIRED');
-    const withW=d.pests.filter(p=>p.warranty);
-    const noW=d.pests.filter(p=>!p.warranty);
-    if(noW.length){
-      const lines=doc.splitTextToSize(noW.map(p=>p.name).join('  |  '),col-6);
-      sf('normal',8.5,[26,26,26]); doc.text(lines,margin+3,y); y+=lines.length*5+2;
-    }
-    if(withW.length){
-      withW.forEach(p=>{
-        sf('normal',8.5,[26,26,26]); doc.text(p.name,margin+3,y);
-        const nw=doc.getTextWidth(p.name);
-        sf('bold',8,[230,51,41]); doc.text(' -- '+p.warranty+' month warranty',margin+3+nw,y);
-        y+=5.5;
-      });
-    }
-    if(d.otherServices){sf('italic',8,[100,100,100]);doc.text('Other: '+d.otherServices,margin+3,y);y+=6;}
+    sh1('PEST MANAGEMENT SERVICES REQUIRED');
+    const withW=d.pests.filter(p=>p.warranty), noW=d.pests.filter(p=>!p.warranty);
+    if(noW.length){ const lines=doc.splitTextToSize(noW.map(p=>p.name).join('  |  '),col-6); sf('normal',8.5,[26,26,26]); doc.text(lines,M+3,y); y+=lines.length*5+2; }
+    withW.forEach(p=>{ sf('normal',8.5,[26,26,26]); doc.text(p.name,M+3,y); sf('bold',8,[230,51,41]); doc.text('  --  '+p.warranty+' month warranty',M+3+doc.getTextWidth(p.name),y); y+=5.5; });
+    if(d.otherServices){ sf('italic',8,[100,100,100]); doc.text('Other: '+d.otherServices,M+3,y); y+=5.5; }
     y+=2;
   }
 
   if(d.inspectionNotes){
-    sh('INSPECTION / HYGIENE / HEALTH & SAFETY ADVICE');
+    sh1('INSPECTION / HYGIENE / HEALTH & SAFETY ADVICE');
     const lines=doc.splitTextToSize(d.inspectionNotes,col-6);
-    sf('normal',8.5,[26,26,26]); doc.text(lines,margin+3,y); y+=lines.length*5+4;
+    sf('normal',8.5,[26,26,26]); doc.text(lines,M+3,y); y+=lines.length*5+4;
   }
 
   if(d.treatRows&&d.treatRows.length){
-    sh('TREATMENT AREAS & CONTROL AGENTS');
+    sh1('TREATMENT AREAS & CONTROL AGENTS');
     d.treatRows.forEach((r,ri)=>{
-      rc(margin,y,col,7,[40,40,40]);
+      rc(M,y,col,7,[40,40,40]);
       sf('bold',8,[255,255,255]);
       const aLines=doc.splitTextToSize(r.area||('Treatment Area '+(ri+1)),col-6);
-      doc.text(aLines[0],margin+3,y+4.8); y+=7;
-      if(aLines.length>1){rc(margin,y,col,(aLines.length-1)*5+3,[55,55,55]);sf('normal',7.5,[210,210,210]);doc.text(aLines.slice(1),margin+3,y+4);y+=(aLines.length-1)*5+3;}
+      doc.text(aLines[0],M+3,y+4.8); y+=7;
+      if(aLines.length>1){ rc(M,y,col,(aLines.length-1)*5+3,[55,55,55]); sf('normal',7.5,[210,210,210]); doc.text(aLines.slice(1),M+3,y+4); y+=(aLines.length-1)*5+3; }
       const cw=[46,55,28,col-46-55-28]; const vals=[r.agent,r.active,r.rate,r.amt]; const heads=['Control Agent','Active Constituent (*Qld)','Rate Used','Amt Used'];
-      if(ri%2===0) rc(margin,y,col,13,[248,248,248]);
-      let tx=margin;
-      cw.forEach((w,i)=>{sf('bold',5.5,[130,130,130]);doc.text(heads[i],tx+2,y+4);sf('normal',8.5,[26,26,26]);doc.text(vals[i]||'',tx+2,y+10);tx+=w;});
-      hl(margin,y+13,margin+col,y+13,[220,220,220]); y+=15;
+      if(ri%2===0) rc(M,y,col,13,[248,248,248]);
+      let tx=M;
+      cw.forEach((w,i)=>{ sf('bold',5.5,[130,130,130]); doc.text(heads[i],tx+2,y+4); sf('normal',8.5,[26,26,26]); doc.text(vals[i]||'',tx+2,y+10); tx+=w; });
+      hl(M,y+13,M+col,y+13,[220,220,220]); y+=15;
     });
     y+=3;
   }
 
   if(d.freeMonths||d.noFreeFor){
-    sh('SPECIFIC LIMITATIONS');
+    sh1('SPECIFIC LIMITATIONS');
     sf('normal',8.5,[26,26,26]);
-    if(d.freeMonths){doc.text('Free Service Period: '+d.freeMonths+' months',margin+3,y);y+=6;}
-    if(d.noFreeFor){doc.text('No Free Service Period -- For: '+d.noFreeFor,margin+3,y);y+=6;}
+    if(d.freeMonths){ doc.text('Free Service Period: '+d.freeMonths+' months',M+3,y); y+=6; }
+    if(d.noFreeFor){ doc.text('No Free Service Period -- For: '+d.noFreeFor,M+3,y); y+=6; }
     y+=3;
   }
 
-  sh('TAX INVOICE');
-  const invX=margin+col*0.54,invW=col*0.44;
+  sh1('TAX INVOICE');
+  const invX=M+col*0.54, invW=col*0.44;
   [['Tax Invoice (excl. GST)','$'+d.invoiceAmt.toFixed(2),false],['GST (10%)','$'+d.gst.toFixed(2),false],['Total Investment','$'+d.total.toFixed(2),true]].forEach(([label,val,isTotal])=>{
     if(isTotal) rc(invX,y-1,invW,8,[230,51,41]);
     sf(isTotal?'bold':'normal',isTotal?9.5:8.5,isTotal?[255,255,255]:[26,26,26]);
@@ -1043,34 +1039,101 @@ function buildPDF(d){
     if(!isTotal) hl(invX,y+6,invX+invW,y+6); y+=isTotal?9:7;
   });
   sf('normal',8,[100,100,100]);
-  doc.text('ABN: 50 192 606 887',margin+3,y-8);
-  if(d.payMethod) doc.text('Payment: '+d.payMethod,margin+3,y-3);
-  if(d.routineAmt){doc.text('Routine Service: $'+d.routineAmt+' per '+(d.routinePer||'--'),margin+3,y+2);y+=6;}
-  y+=6;
+  doc.text('ABN: 50 192 606 887',M+3,y-7);
+  if(d.payMethod) doc.text('Payment: '+d.payMethod,M+3,y-2);
+  if(d.routineAmt){ doc.text('Routine Service: $'+d.routineAmt+' per '+(d.routinePer||'--'),M+3,y+3); y+=6; }
 
-  sh('CLIENT AUTHORISATION');
-  sf('italic',8,[80,80,80]);
-  doc.text('I hereby authorise the above pest management program having read, and had explained to me, the important conditions overleaf.',margin+3,y,{maxWidth:col-6});
-  y+=10;
-  if(d.sigData){try{doc.addImage(d.sigData,'PNG',margin,y,75,24);}catch(e){}}
-  hl(margin,y+26,margin+75,y+26,[26,26,26],0.4);
-  sf('normal',7,[120,120,120]);
-  doc.text('Client Signature',margin,y+30);
-  doc.text('Date: '+d.jobDate,margin+110,y+30);
-
-  rc(0,H-11,W,11,[26,26,26]);
+  // Page 1 footer
+  rc(0,H-10,W,10,[26,26,26]);
   sf('normal',6.5,[150,150,150]);
   doc.text('EVICT-A-PEST  |  0425 775 888  |  www.evict-a-pest.com.au  |  ABN: 50 192 606 887',W/2,H-5,{align:'center'});
-  doc.text('See IMPORTANT Conditions of Service Overleaf',W/2,H-1.5,{align:'center'});
+  doc.text('Page 1 of 2  --  See Important Conditions of Service Overleaf',W/2,H-1.5,{align:'center'});
+
+  // ══ PAGE 2: T&Cs ══
+  doc.addPage();
+  rc(0,0,W,18,[26,26,26]);
+  sf('bold',13,[255,255,255]); doc.text('EVICT-A-PEST',M,12);
+  sf('bold',10,[230,51,41]); doc.text('Important Information Concerning Your Pest Management Program',W/2,12,{align:'center'});
+  sf('normal',7,[150,150,150]); doc.text('Please read all conditions carefully before signing below.',W/2,16,{align:'center'});
+  hl(0,18,W,18,[230,51,41],0.8);
+
+  y=24;
+  const tcSection=(title)=>{ sf('bold',8.5,[26,26,26]); doc.text(title,M,y); hl(M,y+1.5,M+col,y+1.5,[230,51,41],0.5); y+=6; };
+  const tcItem=(num,text,bold)=>{
+    sf('bold',8,[bold?26:180,bold?26:50,bold?26:41]); doc.text(num+'.',M,y);
+    sf(bold?'bold':'normal',bold?7.5:7.5,[26,26,26]);
+    const lines=doc.splitTextToSize(text,col-10);
+    doc.text(lines,M+7,y);
+    y+=lines.length*4.2+2;
+  };
+
+  tcSection('Health and Safety Information');
+  tcItem('1','You must advise us of any pets or of any personal or family/staff allergies, or other concerns.');
+  tcItem('2','Any persons who are particularly sensitive, or who suffer from allergic reactions, should, as a matter of precaution, remain out of the premises for a period of 24 hours and not return until after the premises have been fully ventilated.');
+  tcItem('3','You must remove or protect any people, animals, birds or fish during the treatment period.');
+  tcItem('4','You must cover all food items and all food utensils.');
+  tcItem('5','You must avoid contact with treated surfaces until the control agent has dried.');
+  tcItem('6','You must observe any verbal advice provided by our firm or our licensed operator at the time of treatment.');
+  tcItem('7','You must ensure your premises are properly ventilated after treatment. Leave any air-conditioners on "vent mode" (so they circulate outside air into the building) for a period of at least four hours after the treatment or after re-occupying.');
+  tcItem('8','Water Tanks: No treatment can be carried out around water tanks not fully sealed or to water collection areas. You must advise us of water tanks installations.');
+  y+=2;
+
+  tcSection('Payment Terms and Details of FREE Service Period');
+  tcItem('9','If during the course of the program it is found that structural or environmental conditions prevent us performing any sections of the Management Program then the FREE Service Period or the cost of your investment may have to be reviewed.');
+  tcItem('10','Unless specific written arrangements have been provided the full contract price shall be due and payable and recoverable by this Firm on commencement of the initial treatment.');
+  tcItem('11','Any FREE Service Period shall be null and void unless all monies due and payable to this Firm have been paid in full within the standard terms of business above.');
+  tcItem('12','Where a FREE Service Period has been provided then, upon notification by you, we agree to provide you with any remedial treatment(s) as may be required to the nominated property, AT NO COST TO YOU. Any FREE Service Period is conditional upon you notifying us of signs of pest infestation.');
+  tcItem('13','No responsibility is accepted, or warranty implied, for any damage or consequential losses that may occur as the result of past, current or future pest activity.',true);
+  tcItem('14','The proposed treatment only applies to the pest species named overleaf on this Pest Management Proposal. The program does not provide protection against any other pest/s.');
+  y+=2;
+
+  tcSection('Treatment Details and Control Agents');
+  tcItem('15','Only control agents approved by the Department of Primary Industry and Energy\'s Australian Pesticides & Veterinary Medicines Authority (APVMA) and registered for use by the relevant State or Territory Registration Authority will be used.');
+  tcItem('16','While every care will be taken, this firm will not be held liable should staining of timbers, fabrics, wall coverings, floor coverings or any other articles occur.');
+  tcItem('17','WARNING. Where drilling and/or cutting is required; no liability is accepted should damage result to concealed services such as power, gas, water, etc. You indemnify Us against any costs that may arise from such possible damages. Clear and accurate plans should be provided by you before we commence.');
+  tcItem('18','You accept that this pest management program can be rendered ineffective if you fail to implement our recommended hygiene procedures, by making building alterations, or by the introduction of conducive or infested materials.');
+  y+=2;
+
+  tcSection('Termites and Other Timber Pests');
+  tcItem('19','This program does not cover treatment for, or inspection for, termites (white ants) or any other timber pests.');
+  tcItem('20','We strongly recommend that you should arrange to have your property inspected for termites at least once every twelve (12) months and preferably every three (3) to six (6) months as recommended in the Australian Standards AS 3660 Protection of buildings from subterranean termites and AS 4349.3 Inspection of buildings - Timber pest inspections. A termite or timber pest inspection can be arranged upon request and is recommended.',true);
+  y+=2;
+
+  tcSection('Disclaimer of Liability to Third Parties');
+  tcItem('21','Compensation will only be payable for losses arising in contract or tort sustained by the client named on the front of this Pest Management Treatment Proposal & Advice Notice. Any third party acting or relying on this Pest Management Treatment Proposal & Advice Notice, in whole or in part, does so entirely at their own risk.');
+  y+=4;
+
+  // Signature block at very bottom of page 2
+  const sigY=Math.max(y+4, H-68);
+  hl(M,sigY,M+col,sigY,[230,51,41],0.6);
+  rc(M,sigY+2,col,5,[26,26,26]);
+  sf('bold',8,[255,255,255]); doc.text('CLIENT AUTHORISATION -- By signing below I confirm I have read and understood all conditions above (points 1-21)',M+3,sigY+5.5);
+
+  sf('italic',7.5,[80,80,80]);
+  doc.text('I hereby authorise the above pest management program having read, and had explained to me, all the important conditions set out on this document.',M+3,sigY+12,{maxWidth:col-6});
+
+  if(d.sigData){ try{ doc.addImage(d.sigData,'PNG',M,sigY+16,80,24); }catch(e){} }
+  hl(M,sigY+42,M+80,sigY+42,[26,26,26],0.4);
+  hl(M+90,sigY+42,M+col,sigY+42,[26,26,26],0.4);
+  sf('normal',7,[80,80,80]);
+  doc.text('Client Signature',M,sigY+46);
+  doc.text('Date: '+d.jobDate,M+90,sigY+46);
+  doc.text('Name: '+d.clientName,M+90,sigY+51);
+
+  // Page 2 footer
+  rc(0,H-10,W,10,[26,26,26]);
+  sf('normal',6.5,[150,150,150]);
+  doc.text('EVICT-A-PEST  |  0425 775 888  |  www.evict-a-pest.com.au  |  ABN: 50 192 606 887',W/2,H-5,{align:'center'});
+  doc.text('Page 2 of 2  --  Copyright RAPID Solutions PMTP PAD 7 03.06 V2-2',W/2,H-1.5,{align:'center'});
 
   doc.save('EAP-'+(d.clientName||'job').replace(/\s+/g,'_')+'-'+(d.jobDate||'nodate')+'.pdf');
-  showToast('PDF generated!');
+  showToast('PDF saved!');
 }
 
 function showToast(msg,isError){
   const t=document.getElementById('toast');
   t.textContent=msg; t.className='show'+(isError?' error':'');
-  clearTimeout(window._tt); window._tt=setTimeout(()=>t.className='',3000);
+  clearTimeout(window._tt); window._tt=setTimeout(()=>t.className='',3500);
 }
 </script>
 </body>
