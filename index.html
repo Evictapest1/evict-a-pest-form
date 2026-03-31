@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evict-A-Pest | Job Form</title>
+<title>Evict-A-Pest | Invoice</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -17,8 +17,7 @@
 
   /* ── HEADER ── */
   header { background: var(--dark); display: flex; align-items: stretch; border-bottom: 5px solid var(--red); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
-  .header-logo { background: var(--red); padding: 12px 22px; display: flex; align-items: center; }
-  .header-logo img { height: 46px; }
+
   .header-title { padding: 12px 20px; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
   .header-title h1 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; color: var(--white); letter-spacing: 3px; line-height: 1; }
   .header-title span { font-size: 0.7rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
@@ -239,12 +238,9 @@
 <body>
 
 <header>
-  <div class="header-logo">
-    <img src="https://raw.githubusercontent.com/Evictapest1/JobScanner/main/Evict-A-Pest-transparent.png" alt="Evict-A-Pest" onerror="this.style.display='none'">
-  </div>
   <div class="header-title">
     <h1>Evict-A-Pest</h1>
-    <span>Pest Management Treatment Proposal</span>
+    <span>Pest Invoice &amp; Treatment Record</span>
   </div>
   <div class="header-actions">
     <button class="btn btn-outline" onclick="clearForm()">&#x1F5D1; <span>Clear</span></button>
@@ -418,7 +414,7 @@
           </div>
         </div>
         <div class="preview-header-right">
-          <h3>Pest Management Treatment<br>Proposal &amp; Advice Notice</h3>
+          <h3>Pest Management Treatment<br>Tax Invoice &amp; Advice Notice</h3>
           <div class="job-num" id="pvJobNum"></div>
         </div>
       </div>
@@ -512,7 +508,7 @@
         <div class="tc-item bold-item"><span class="tc-num">20.</span><span><strong>We strongly recommend that you should arrange to have your property inspected for termites at least once every twelve (12) months and preferably every three (3) to six (6) months as recommended in the Australian Standards AS 3660 Protection of buildings from subterranean termites and AS 4349.3 Inspection of buildings - Timber pest inspections. A termite or timber pest inspection can be arranged upon request and is recommended.</strong></span></div>
 
         <div class="tc-section-title">Disclaimer of Liability to Third Parties</div>
-        <div class="tc-item"><span class="tc-num">21.</span><span>Compensation will only be payable for losses arising in contract or tort sustained by the client named on the front of this Pest Management Treatment Proposal &amp; Advice Notice. Any third party acting or relying on this Pest Management Treatment Proposal &amp; Advice Notice, in whole or in part, does so entirely at their own risk.</span></div>
+        <div class="tc-item"><span class="tc-num">21.</span><span>Compensation will only be payable for losses arising in contract or tort sustained by the client named on the front of this Pest Management Treatment Tax Invoice &amp; Advice Notice. Any third party acting or relying on this Pest Management Treatment Tax Invoice &amp; Advice Notice, in whole or in part, does so entirely at their own risk.</span></div>
 
       </div>
 
@@ -588,6 +584,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   buildPestGrid(); setDefaultDate(); initPreviewSig();
   addTreatCard('Interior to: '); addTreatCard('Exterior to: '); addTreatCard('Other: Roof Void');
   renderHistory();
+  // Preload logo for PDF - fetch once, cache as data URL
+  const logoUrl = 'https://raw.githubusercontent.com/Evictapest1/JobScanner/main/Evict-A-Pest-transparent.png';
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = function(){
+    const canvas = document.createElement('canvas');
+    canvas.width = img.width; canvas.height = img.height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    window._logoDataUrl = canvas.toDataURL('image/png');
+  };
+  img.src = logoUrl;
 });
 
 function setDefaultDate(){ document.getElementById('jobDate').value=new Date().toISOString().split('T')[0]; }
@@ -847,7 +855,7 @@ function emailClient(){
   const subject=encodeURIComponent('Evict-A-Pest Treatment Proposal -- '+d.clientName+' -- '+d.jobDate);
   const body=encodeURIComponent(
     'Dear '+d.clientName+',\n\n'+
-    'Please find attached your Pest Management Treatment Proposal & Advice Notice.\n\n'+
+    'Please find attached your Pest Management Treatment Tax Invoice & Advice Notice.\n\n'+
     'Job Date: '+d.jobDate+'\n'+
     'Address: '+[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', ')+'\n'+
     'Total Investment: $'+d.total.toFixed(2)+'\n\n'+
@@ -968,18 +976,25 @@ function buildPDF(d){
 
   // ══ PAGE 1 ══
   // Red header
-  rc(0,0,W,32,[230,51,41]);
-  sf('bold',20,[255,255,255]); doc.text('EVICT-A-PEST',M,14);
-  sf('normal',7.5,[255,200,200]); doc.text('send your pests packing!',M,19.5);
+  rc(0,0,W,36,[230,51,41]);
+  // Logo image - sits on red background, transparent PNG looks clean
+  if(window._logoDataUrl){
+    try{ doc.addImage(window._logoDataUrl,'PNG',M,3,55,28); }catch(e){
+      sf('bold',20,[255,255,255]); doc.text('EVICT-A-PEST',M,16);
+    }
+  } else {
+    sf('bold',20,[255,255,255]); doc.text('EVICT-A-PEST',M,16);
+    sf('normal',7.5,[255,200,200]); doc.text('send your pests packing!',M,22);
+  }
   sf('normal',6.5,[255,200,200]);
-  doc.text('Mobile: 0425 775 888  |  www.evict-a-pest.com.au  |  ABN: 50 192 606 887',M,25);
-  doc.text('Gary Cook Lic. 5070032  |  Brad Cook Lic. 5080831',M,29.5);
+  doc.text('Mobile: 0425 775 888  |  www.evict-a-pest.com.au  |  ABN: 50 192 606 887',M,29);
+  doc.text('Gary Cook Lic. 5070032  |  Brad Cook Lic. 5080831',M,33.5);
   sf('bold',10,[255,255,255]);
-  doc.text('Pest Management Treatment',W-M,14,{align:'right'});
-  doc.text('Proposal & Advice Notice',W-M,19.5,{align:'right'});
-  if(d.jobNumber){rc(W-M-26,23,28,8,[180,30,20]);sf('bold',9,[255,255,255]);doc.text(d.jobNumber,W-M-1,29,{align:'right'});}
+  doc.text('Pest Management',W-M,14,{align:'right'});
+  doc.text('Tax Invoice & Advice Notice',W-M,19.5,{align:'right'});
+  if(d.jobNumber){rc(W-M-26,25,28,8,[180,30,20]);sf('bold',9,[255,255,255]);doc.text(d.jobNumber,W-M-1,31,{align:'right'});}
 
-  let y=38;
+  let y=42;
   const sh1=(title)=>{rc(M,y,col,7,[26,26,26]);sf('bold',8,[255,255,255]);doc.text(title,M+3,y+4.8);y+=10;};
 
   sh1('CLIENT & JOB DETAILS');
@@ -1100,7 +1115,7 @@ function buildPDF(d){
   y+=2;
 
   tcSection('Disclaimer of Liability to Third Parties');
-  tcItem('21','Compensation will only be payable for losses arising in contract or tort sustained by the client named on the front of this Pest Management Treatment Proposal & Advice Notice. Any third party acting or relying on this Pest Management Treatment Proposal & Advice Notice, in whole or in part, does so entirely at their own risk.');
+  tcItem('21','Compensation will only be payable for losses arising in contract or tort sustained by the client named on the front of this Pest Management Treatment Tax Invoice & Advice Notice. Any third party acting or relying on this Pest Management Treatment Tax Invoice & Advice Notice, in whole or in part, does so entirely at their own risk.');
   y+=4;
 
   // Signature block at very bottom of page 2
