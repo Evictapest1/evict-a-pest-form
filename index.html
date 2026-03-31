@@ -544,8 +544,16 @@
         <div style="background:#2a1a0a;border:1.5px solid #f59e0b;border-radius:8px;padding:14px 16px;margin-bottom:16px;display:flex;gap:12px;align-items:flex-start;">
           <span style="font-size:1.4rem;flex-shrink:0;">&#x1F4CE;</span>
           <div>
-            <p style="color:#f59e0b;font-weight:700;font-size:0.88rem;margin-bottom:4px;">STEP 1 — PDF already saved to your device</p>
-            <p style="color:#d4a060;font-size:0.82rem;line-height:1.6;">When the email app opens, tap the <strong style="color:white;">attach / paperclip</strong> button and select the PDF from your <strong style="color:white;">Downloads</strong> folder before sending.</p>
+            <p style="color:#f59e0b;font-weight:700;font-size:0.88rem;margin-bottom:6px;">STEP 1 — Attach the PDF</p>
+            <p style="color:#d4a060;font-size:0.82rem;line-height:1.7;margin-bottom:6px;">
+              <strong style="color:white;">On iPhone:</strong> The PDF opened in a new tab. Tap the
+              <strong style="color:white;">share button &#x2B06;&#xFE0F;</strong> in Safari, then choose
+              <strong style="color:white;">Mail</strong> to attach it directly — or save to
+              <strong style="color:white;">Files</strong> first.
+            </p>
+            <p style="color:#d4a060;font-size:0.82rem;line-height:1.7;">
+              <strong style="color:white;">On desktop:</strong> PDF saved to your Downloads folder. Attach it manually before sending.
+            </p>
           </div>
         </div>
 
@@ -1150,8 +1158,18 @@ function buildPDF(d){
   doc.text('EVICT-A-PEST  |  0425 775 888  |  www.evict-a-pest.com.au  |  ABN: 50 192 606 887',W/2,H-5,{align:'center'});
   doc.text('Page 2 of 2  --  Copyright RAPID Solutions PMTP PAD 7 03.06 V2-2',W/2,H-1.5,{align:'center'});
 
-  doc.save('EAP-'+(d.clientName||'job').replace(/\s+/g,'_')+'-'+(d.jobDate||'nodate')+'.pdf');
-  showToast('PDF saved!');
+  const fname='EAP-'+(d.clientName||'job').replace(/\s+/g,'_')+'-'+(d.jobDate||'nodate')+'.pdf';
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if(isIOS){
+    // On iPhone: open in new tab so share sheet can save/email/airdrop
+    const pdfBlob = doc.output('blob');
+    const blobUrl = URL.createObjectURL(pdfBlob);
+    window.open(blobUrl, '_blank');
+    showToast('PDF opened — use share button to save or email!');
+  } else {
+    doc.save(fname);
+    showToast('PDF saved to Downloads!');
+  }
 }
 
 function showToast(msg,isError){
