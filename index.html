@@ -591,7 +591,13 @@ const AGENTS = [
   {name:'Other',active:''}
 ];
 
-const OUR_EMAIL = 'info@evict-a-pest.com.au'; // change to your actual email
+const OUR_EMAIL = 'info@evict-a-pest.com.au';
+
+function auDate(dateStr){
+  if(!dateStr) return '';
+  const [y,m,d] = dateStr.split('-');
+  return d+'/'+m+'/'+y;
+} // change to your actual email
 
 let selectedProp='', selectedPay='', cardCount=0;
 let previewSigDrawing=false, previewSigHasMark=false;
@@ -777,7 +783,7 @@ function openPreview(){
   // Populate preview fields
   document.getElementById('pvJobNum').textContent=d.jobNumber||'';
   document.getElementById('pvClientName').textContent=d.clientName;
-  document.getElementById('pvDate').textContent=d.jobDate;
+  document.getElementById('pvDate').textContent=auDate(d.jobDate);
   document.getElementById('pvAddress').textContent=[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', ');
   document.getElementById('pvPhone').textContent=d.clientPhone||'--';
   document.getElementById('pvTech').textContent=d.techName||'--';
@@ -827,7 +833,7 @@ function openPreview(){
 
   // Sig footer info
   document.getElementById('sigClientName').textContent=d.clientName;
-  document.getElementById('sigDate').textContent=d.jobDate;
+  document.getElementById('sigDate').textContent=auDate(d.jobDate);
 
   // Pre-fill client email if set
   document.getElementById('emailClientAddr').value=d.clientEmail||'';
@@ -869,11 +875,11 @@ function finalisePDF(){
 function emailClient(){
   const addr=document.getElementById('emailClientAddr').value||lastSavedData.clientEmail||'';
   const d=lastSavedData;
-  const subject=encodeURIComponent('Evict-A-Pest Treatment Proposal -- '+d.clientName+' -- '+d.jobDate);
+  const subject=encodeURIComponent('Evict-A-Pest Treatment Proposal -- '+d.clientName+' -- '+auDate(d.jobDate));
   const body=encodeURIComponent(
     'Dear '+d.clientName+',\n\n'+
     'Please find attached your Pest Management Treatment Tax Invoice & Advice Notice.\n\n'+
-    'Job Date: '+d.jobDate+'\n'+
+    'Job Date: '+auDate(d.jobDate)+'\n'+
     'Address: '+[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', ')+'\n'+
     'Total Investment: $'+d.total.toFixed(2)+'\n\n'+
     'Please attach the PDF that was just saved to your device.\n\n'+
@@ -884,12 +890,12 @@ function emailClient(){
 
 function emailOurselves(){
   const d=lastSavedData;
-  const subject=encodeURIComponent('Job Record -- '+d.clientName+' -- '+d.jobDate);
+  const subject=encodeURIComponent('INVOICE -- '+([d.treatAddress,d.clientSuburb].filter(Boolean).join(', '))+' -- '+auDate(d.jobDate));
   const body=encodeURIComponent(
-    'Job Record\n\n'+
+    'INVOICE -- '+([d.treatAddress,d.clientSuburb].filter(Boolean).join(', '))+'\n\n'+
     'Client: '+d.clientName+'\n'+
     'Phone: '+(d.clientPhone||'--')+'\n'+
-    'Date: '+d.jobDate+'\n'+
+    'Date: '+auDate(d.jobDate)+'\n'+
     'Address: '+[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', ')+'\n'+
     'Technician: '+(d.techName||'--')+'\n'+
     'Pests Treated: '+(d.pests||[]).map(p=>p.name+(p.warranty?' ('+p.warranty+' mth)':'')).join(', ')+'\n'+
@@ -1016,7 +1022,7 @@ function buildPDF(d){
 
   sh1('CLIENT & JOB DETAILS');
   fld('Client Name',d.clientName,M,y,col*0.55);
-  fld('Date',d.jobDate,M+col*0.6,y,col*0.38); y+=12;
+  fld('Date',auDate(d.jobDate),M+col*0.6,y,col*0.38); y+=12;
   fld('Address',[d.treatAddress,d.clientSuburb,d.clientState,d.clientPostcode].filter(Boolean).join(', '),M,y,col*0.75);
   fld('Phone',d.clientPhone,M+col*0.78,y,col*0.2); y+=12;
   fld('Technician',d.techName,M,y,col*0.45);
@@ -1149,7 +1155,7 @@ function buildPDF(d){
   hl(M+90,sigY+42,M+col,sigY+42,[26,26,26],0.4);
   sf('normal',7,[80,80,80]);
   doc.text('Client Signature',M,sigY+46);
-  doc.text('Date: '+d.jobDate,M+90,sigY+46);
+  doc.text('Date: '+auDate(d.jobDate),M+90,sigY+46);
   doc.text('Name: '+d.clientName,M+90,sigY+51);
 
   // Page 2 footer
